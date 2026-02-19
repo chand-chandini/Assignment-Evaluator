@@ -1,0 +1,50 @@
+# Environment Variables
+.env
+.env.local
+.env.*.local
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build outputs
+dist/
+build/
+*.tgz
+
+# Logs
+logs/
+*.log
+
+# File uploads
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# Database
+*.sql.bak
+*.sql.gz
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+.cache/
+.env.example
+todo.txt
