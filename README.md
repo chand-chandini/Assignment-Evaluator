@@ -1,103 +1,42 @@
-# ThinkPlus - AI-Powered Assignment Evaluation Platform
+# ThinkPlus
 
-A comprehensive web application for managing assignments, tracking submissions, and providing AI-powered plagiarism detection and automated feedback.
+AI-powered assignment evaluation platform for instructors and students.
 
-![Status](https://img.shields.io/badge/status-active-success)
-![License](https://img.shields.io/badge/license-MIT-blue)
-![Node Version](https://img.shields.io/badge/node-14.0.0+-green)
-![MySQL Version](https://img.shields.io/badge/mysql-8.0+-blue)
+## Features
 
-##  Features
+- **Students**: Submit assignments, view feedback, check plagiarism risk
+- **Instructors**: Create assignments, review submissions, view AI-generated reports
+- **AI Evaluation**: Plagiarism detection, content analysis, automated feedback
 
-### For Students
+## Tech Stack
 
--  View assigned assignments with descriptions and due dates
--  Submit assignments via text or file upload
--  Receive AI-powered feedback on submissions
--  View plagiarism risk assessment
--  Track submission status and scores
+- **Backend**: Node.js, Express, MySQL
+- **Frontend**: HTML, CSS, JavaScript
+- **AI**: Content analysis and plagiarism detection
 
-### For Instructors
+## Quick Start
 
--  Create and manage assignments
--  Set due dates and maximum scores
--  Review student submissions
--  View AI-generated plagiarism reports
--  Track all student submissions
+### 1. Setup Database
+```bash
+mysql -u root < backend/database/schema.sql
+```
 
-### AI Features
+### 2. Setup Backend
+```bash
+cd backend
+npm install
+```
 
--  Plagiarism detection with similarity scoring
--  Content quality analysis
--  Automated feedback generation
--  Risk categorization (Low/Medium/High)
+### 3. Run Server
+```bash
+npm start
+```
 
-## Project Structure
+Open `frontend/index.html` in your browser.
 
-````
-thinkplus/
-├── backend/
-│   ├── controllers/       # Request handlers
-│   ├── routes/           # API routes
-│   ├── middleware/       # Authentication middleware
-│   ├── utils/            # AI evaluator and utilities
-│   ├── database/         # Database schema
-│   ├── uploads/          # File storage
-│   ├── server.js         # Express server
-│   ├── package.json      # Dependencies
-│   └── .env              # Environment variables
-│
-└── frontend/
-    ├── index.html        # Home page
-    ├── student-dashboard.html
-    ├── instructor-dashboard.html
-    ├── js/
-    │   └── script.js     # Frontend logic
-    └── css/
-        └── style.css     # Styles
+## License
 
-## Prerequisites
-
-- Node.js (v14 or higher)
-- MySQL Server (v5.7 or higher)
-- npm (comes with Node.js)
-
-## Installation & Setup
-
-### 1. Database Setup
-
-1. Open MySQL and run the SQL script to create the database:
-   ```bash
-   mysql -u root < backend/database/schema.sql
-````
-
-2. Verify the database was created:
-   ```sql
-   USE assignment_platform;
-   SHOW TABLES;
-   ```
-
-### 2. Backend Setup
-
-1. Navigate to the backend folder:
-
-   ```bash
-   cd backend
-   ```
-
-2. Install dependencies:
-
-   ```bash
-   npm install
-   ```
-
-3. Configure environment variables - Edit `.env`:
-
-   ```
-   PORT=5000
-   DB_HOST=localhost
-   DB_USER=root
-   DB_PASSWORD=your_password
+MIT
    DB_NAME=assignment_platform
    JWT_SECRET=your_secret_key
    NODE_ENV=development
