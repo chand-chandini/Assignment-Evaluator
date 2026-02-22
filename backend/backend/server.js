@@ -11,13 +11,13 @@ const app = express();
 // Import database connection
 const db = require("./database/db");
 
-// ================= MIDDLEWARE =================
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/uploads", express.static("uploads"));
 
-// ================= FILE UPLOAD CONFIG =================
+// File upload configuration
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/");
@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({
   storage: storage,
-  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB
+  limits: { fileSize: 10 * 1024 * 1024 }, // 10MB limit
   fileFilter: (req, file, cb) => {
     if (file.mimetype === "application/pdf" || file.mimetype === "text/plain") {
       cb(null, true);
@@ -39,35 +39,23 @@ const upload = multer({
   },
 });
 
-// ================= ROUTES =================
+// Import routes
 const authRoutes = require("./routes/authRoutes");
 const assignmentRoutes = require("./routes/assignmentRoutes");
 const submissionRoutes = require("./routes/submissionRoutes");
 
+// Use routes
 app.use("/api/auth", authRoutes);
 app.use("/api/assignments", assignmentRoutes);
 app.use("/api/submissions", submissionRoutes);
 
-// ================= TEST ROUTE =================
-app.get("/", (req, res) => {
-  res.send("Backend is working 🚀");
-});
-
-// ================= ERROR HANDLER =================
+// Error handling middleware
 app.use((err, req, res, next) => {
-  console.error("Error:", err.stack);
-  res.status(500).json({
-    success: false,
-    message: err.message || "Something went wrong!",
-  });
+  console.error(err.stack);
+  res.status(500).json({ error: err.message || "Something went wrong!" });
 });
 
-// ================= START SERVER =================
 const PORT = process.env.PORT || 5000;
-
 app.listen(PORT, () => {
-  const host = "localhost"; // can also use os.hostname() if you want
-  console.log("=================================");
-  console.log(`🚀 Server running at: http://${host}:${PORT}`);
-  console.log("=================================");
+  console.log(`Server running on port ${PORT}`);
 });

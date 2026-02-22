@@ -1,9 +1,9 @@
-// backend/routes/submissionRoutes.js
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const path = require("path");
 const submissionController = require("../controllers/submissionController");
+const authMiddleware = require("../middleware/auth");
 
 // Configure multer for file uploads
 const storage = multer.diskStorage({

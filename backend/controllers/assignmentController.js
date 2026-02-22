@@ -1,3 +1,4 @@
+// backend/controllers/assignmentController.js
 const db = require("../database/db");
 
 // Mock/test data for when database is unavailable

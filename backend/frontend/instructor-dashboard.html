@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instructor Dashboard - Assignment Platform</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">📚 Assignment Platform</h1>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="student-dashboard.html">Student Dashboard</a>
+                <a href="instructor-dashboard.html" class="active">Instructor Dashboard</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="dashboard-header">
+            <h1>Instructor Dashboard</h1>
+            <div class="user-info">
+                <span id="instructorName">Prof. Wilson</span>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+        </div>
+
+        <div class="dashboard-grid">
+            <div class="sidebar">
+                <div class="profile-card">
+                    <div class="profile-avatar">👨‍🏫</div>
+                    <h3 id="instructorDisplayName">Prof. Wilson</h3>
+                    <p id="instructorEmail">wilson@example.com</p>
+                </div>
+                
+                <button class="btn btn-primary btn-block" onclick="showCreateAssignment()">
+                    + Create New Assignment
+                </button>
+            </div>
+
+            <div class="main-content">
+                <div class="tabs">
+                    <button class="tab-btn active" onclick="showInstructorTab('assignments')">My Assignments</button>
+                    <button class="tab-btn" onclick="showInstructorTab('submissions')">All Submissions</button>
+                </div>
+
+                <div id="instructor-assignments-tab" class="tab-content active">
+                    <h2>My Assignments</h2>
+                    <div id="instructorAssignmentsList" class="cards-grid">
+                        <!-- Assignments will be loaded here -->
+                    </div>
+                </div>
+
+                <div id="instructor-submissions-tab" class="tab-content">
+                    <h2>All Submissions</h2>
+                    <div id="allSubmissionsList" class="submissions-list">
+                        <!-- All submissions will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Create Assignment Modal -->
+        <div id="createAssignmentModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeCreateModal()">&times;</span>
+                <h2>Create New Assignment</h2>
+                <form id="createAssignmentForm" onsubmit="createAssignment(event)">
+                    <input type="hidden" name="instructor_id" value="3">
+                    
+                    <div class="form-group">
+                        <label for="assignmentTitle">Title:</label>
+                        <input type="text" id="assignmentTitle" name="title" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="assignmentDesc">Description:</label>
+                        <textarea id="assignmentDesc" name="description" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="maxScore">Maximum Score:</label>
+                        <input type="number" id="maxScore" name="max_score" value="100" min="1" max="1000">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="dueDate">Due Date:</label>
+                        <input type="datetime-local" id="dueDate" name="due_date">
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Create Assignment</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- View Submission Modal -->
+        <div id="viewSubmissionModal" class="modal">
+            <div class="modal-content modal-lg">
+                <span class="close" onclick="closeViewModal()">&times;</span>
+                <h2>Submission Details</h2>
+                <div id="submissionDetails"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

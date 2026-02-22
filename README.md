@@ -413,13 +413,13 @@ REACT_APP_API_URL=https://your-backend-railway.app
 
 ## 🔐 Security Considerations
 
-1. **Passwords**: Hashed using bcryptjs (done automatically)
-2. **JWT Tokens**: Stored in localStorage, validate on every request
-3. **SQL Injection**: Uses prepared statements
-4. **CORS**: Configured for specific origins
-5. **File Upload**: Validates file types and size
-6. **Rate Limiting**: Recommended for production
-7. **HTTPS**: Required for deployment
+1. Passwords: Hashed using bcryptjs (done automatically)
+2. JWT Tokens: Stored in localStorage, validate on every request
+3. SQL Injection: Uses prepared statements
+4. CORS: Configured for specific origins
+5. File Upload: Validates file types and size
+6. Rate Limiting: Recommended for production
+7. HTTPS: Required for deployment
 
 ## 📈 Performance Optimization
 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - Assignment Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-card">
+    <h1>Sign Up</h1>
+    <form id="signupForm">
+      <div class="form-group">
+        <label for="signupName">Full Name:</label>
+        <input type="text" id="signupName" placeholder="Enter your full name" required>
+      </div>
+      <div class="form-group">
+        <label for="signupEmail">Email:</label>
+        <input type="text" id="signupEmail" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="signupPassword">Password:</label>
+        <input type="password" id="signupPassword" placeholder="Enter your password" required>
+      </div>
+      <div class="form-group">
+        <label for="signupRole">I am a:</label>
+        <select id="signupRole" required>
+          <option value="" disabled selected>Select role</option>
+          <option value="student">Student</option>
+          <option value="instructor">Instructor</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-secondary btn-block">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="login.html">Login</a></p>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      const name = document.getElementById("signupName").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+      const role = document.getElementById("signupRole").value;
+
+      if(name && email && password && role){
+        alert(`Signup successful as ${role}: ${name}`);
+        // Redirect to login page after signup
+        window.location.href = "login.html";
+      } else {
+        alert("Please fill all fields!");
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Assignment Platform</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="auth-card">
+    <h1>Login</h1>
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="loginEmail">Email:</label>
+        <input type="text" id="loginEmail" placeholder="Enter your email" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password" required>
+      </div>
+      <div class="form-group">
+        <label for="loginRole">I am a:</label>
+        <select id="loginRole" required>
+          <option value="student">Student</option>
+          <option value="instructor">Instructor</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Login</button>
+    </form>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+  </div>
+
+  <script>
+    document.getElementById("loginForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      // Get form values
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+      const role = document.getElementById("loginRole").value;
+
+      // Simulate login validation (you can replace this with real backend check)
+      if(email && password && role){
+        alert(`Logged in as ${role}: ${email}`);
+        // Redirect to home page
+        window.location.href = "index.html";
+      } else {
+        alert("Please fill all fields!");
+      }
+    });
+  </script>
+</body>
+</html>

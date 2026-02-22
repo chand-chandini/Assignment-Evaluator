@@ -1,3 +1,4 @@
+// backend/controllers/submissionController.js
 const db = require("../database/db");
 const aiEvaluator = require("../utils/aiEvaluator");
 
