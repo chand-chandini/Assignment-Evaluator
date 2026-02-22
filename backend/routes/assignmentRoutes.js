@@ -1,50 +1,42 @@
-// backend/routes/assignmentRoutes.js
 const express = require("express");
 const router = express.Router();
 const assignmentController = require("../controllers/assignmentController");
 const authMiddleware = require("../middleware/auth");
 
-// Public: Get all assignments
+// Get all assignments
 router.get("/", assignmentController.getAllAssignments);
 
 // Get assignment by ID
 router.get("/:id", assignmentController.getAssignmentById);
 
-// Instructor routes
+// Get instructor's assignments
 router.get(
-  "/instructor",
-  authMiddleware.verifyToken,
-  authMiddleware.isInstructor,
-  (req, res) => assignmentController.getInstructorAssignments(req, res, req.user.id)
+  "/instructor/:instructor_id",
+  assignmentController.getInstructorAssignments,
 );
 
+// Create new assignment (instructor only)
 router.post(
   "/",
   authMiddleware.verifyToken,
   authMiddleware.isInstructor,
-  assignmentController.createAssignment
+  assignmentController.createAssignment,
 );
 
+// Update assignment
 router.put(
   "/:id",
   authMiddleware.verifyToken,
   authMiddleware.isInstructor,
-  assignmentController.updateAssignment
+  assignmentController.updateAssignment,
 );
 
+// Delete assignment
 router.delete(
   "/:id",
   authMiddleware.verifyToken,
   authMiddleware.isInstructor,
-  assignmentController.deleteAssignment
-);
-
-// Student routes
-router.get(
-  "/student",
-  authMiddleware.verifyToken,
-  authMiddleware.isStudent,
-  assignmentController.getAllAssignmentsForStudent
+  assignmentController.deleteAssignment,
 );
 
 module.exports = router;
