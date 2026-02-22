@@ -9,7 +9,11 @@ dotenv.config();
 const app = express();
 
 // Import database connection
+<<<<<<< HEAD
 const db = require("./db");
+=======
+const db = require("./database/db");
+>>>>>>> 457c774 (Added server and database files)
 
 // ================= MIDDLEWARE =================
 app.use(cors());
@@ -69,8 +73,13 @@ app.use((err, req, res, next) => {
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
+<<<<<<< HEAD
   const host = "localhost"; // can also use os.hostname() if you want
   console.log("=================================");
   console.log(`🚀 Server running at: http://${host}:${PORT}`);
+=======
+  console.log("=================================");
+  console.log(`🚀 Server running on port ${PORT}`);
+>>>>>>> 457c774 (Added server and database files)
   console.log("=================================");
 });
