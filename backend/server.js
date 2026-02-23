@@ -9,8 +9,7 @@ dotenv.config();
 const app = express();
 
 // Import database connection
-const db = require("./database/db");
-
+const db = require("./db");
 // ================= MIDDLEWARE =================
 app.use(cors());
 app.use(express.json());

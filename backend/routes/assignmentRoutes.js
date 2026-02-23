@@ -4,19 +4,21 @@ const router = express.Router();
 const assignmentController = require("../controllers/assignmentController");
 const authMiddleware = require("../middleware/auth");
 
-// Get all assignments
+// Public: Get all assignments
 router.get("/", assignmentController.getAllAssignments);
 
 // Get assignment by ID
 router.get("/:id", assignmentController.getAssignmentById);
 
-// Get instructor's assignments
+// Instructor routes
 router.get(
-  "/instructor/:instructor_id",
-  assignmentController.getInstructorAssignments,
+  "/instructor",
+  authMiddleware.verifyToken,
+  authMiddleware.isInstructor,
+  (req, res) =>
+    assignmentController.getInstructorAssignments(req, res, req.user.id),
 );
 
-// Create new assignment (instructor only)
 router.post(
   "/",
   authMiddleware.verifyToken,
@@ -24,7 +26,6 @@ router.post(
   assignmentController.createAssignment,
 );
 
-// Update assignment
 router.put(
   "/:id",
   authMiddleware.verifyToken,
@@ -32,12 +33,19 @@ router.put(
   assignmentController.updateAssignment,
 );
 
-// Delete assignment
 router.delete(
   "/:id",
   authMiddleware.verifyToken,
   authMiddleware.isInstructor,
   assignmentController.deleteAssignment,
+);
+
+// Student routes
+router.get(
+  "/student",
+  authMiddleware.verifyToken,
+  authMiddleware.isStudent,
+  assignmentController.getAllAssignmentsForStudent,
 );
 
 module.exports = router;
